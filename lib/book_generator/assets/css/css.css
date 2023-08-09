@@ -1,0 +1,396 @@
+/*@font-face {
+    font-family: IranSansBold;
+    src: url('../fonts/iran_sans2.woff2');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: IranSansNormal;
+    src: url('../fonts/iran_sans1.woff2');
+    font-weight: bold;
+}*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(15, 80, 108, 0.37);
+    font-family: IranSansNormal;
+    overflow: hidden;
+}
+
+.tools_container {
+    position: fixed;
+    width: 80px;
+    height: 100%;
+    background-color: #4e341936;
+    box-shadow: 0px 0px 11px #060606;
+    font-family: IranSansNormal;
+    z-index: 10;
+}
+
+
+.tools_container .item {
+    position: relative;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    background-size: 100% 100%;
+    margin-top: 15px;
+    margin-left: 4px;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lock {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.tools_container .item .tooltiptext, .lock .locktooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: #9c68ed;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 20px;
+    position: absolute;
+    z-index: 1;
+    top: 15px;
+    left: 60px;
+}
+
+#generate_book_submit_page {
+
+    width: 65px;
+    height: 65px;
+    border: 0;
+    left: 10px;
+    bottom: 100px;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.submit_page .tooltiptext {
+    width: max-content;
+    background-color: #9c68ed;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 20px;
+    position: absolute;
+}
+
+.lock .locktooltiptext {
+    top: -10px;
+    left: 30px;
+    font-size: 12px;
+    height: max-content;
+}
+
+.tools_container .item:hover .tooltiptext, .lock:hover .locktooltiptext {
+    visibility: visible;
+}
+
+
+.tools_container .item img {
+    width: 80%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+}
+
+.tools_container .item:hover {
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.main_container {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    box-shadow: 0px 0px 10px #252525;
+
+    transition: 0s;
+}
+
+.paragraph_blur {
+    border: none;
+    background-color: transparent;
+}
+
+
+.right_box_label {
+    font-size: 14px;
+    color: white;
+}
+
+.right_box_input_number {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    height: 30px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+
+.setting_overlayer, .image_gallery_overlayer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.58);
+    display: none;
+    z-index: 10000;
+    font-family: IranSansNormal;
+}
+
+.image_gallery_overlayer {
+    display: unset;
+}
+
+.setting_overlayer .url_box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    width: 400px;
+    height: max-content;
+    margin: auto;
+    direction: rtl;
+    outline: none;
+    font-family: IranSansNormal;
+}
+
+.setting_overlayer .url_box input[type=text] {
+    margin-top: 15px;
+    height: 35px;
+    border-radius: 7px;
+    width: 100%;
+    border: 1px solid #cccaca;
+}
+
+.setting_overlayer .url_box .add_image_btn {
+    border: none;
+    background-color: #5fb9b9;
+    color: white;
+    line-height: 30px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-family: IranSansNormal;
+}
+
+#import_overlayer .import_book_btn, #image_gallery .import_book_btn {
+    border: none;
+    background-color: #5fb9b9;
+    color: white;
+    line-height: 30px;
+    height: 43px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: max-content;
+    min-width: 200px;
+    bottom: 20px;
+    font-family: IranSansNormal;
+}
+
+#editor {
+    background-color: white;
+    width: 80%;
+    height: 66%;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0px;
+    bottom: 57px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+    font-size: 15px;
+}
+
+
+.border-dashed {
+    border: 2px dashed cadetblue;
+}
+
+#image_gallery {
+    width: 650px;
+    height: 80%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.gallery_item {
+    display: inline-block;
+    width: max-content;
+    position: relative;
+}
+
+.gallery_item img {
+    width: 180px;
+    height: 180px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 1px #ededed;
+    position: relative;
+}
+
+.loading_img_gallery, .save_image_loading {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 10;
+    background: url("../images/loading.gif") center center no-repeat;
+    background-size: contain;
+}
+
+.save_image_loading_overlayer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: black;
+    top: 0;
+    z-index: 1000;
+    opacity: .6
+}
+
+.container_zooming {
+    width: 30%;
+    margin: auto;
+    z-index: 500000;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#container_zooming {
+    width: 100%;
+}
+
+#container_zooming_reset {
+    width: 25px;
+    height: 25px;
+    background: url("../images/reset.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.paragraph_inputs input {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+}
+
+.paragraph_inputs input::placeholder {
+    font-family: IranSansNormal;
+    font-size: 14px;
+}
+
+.select_paragraph_type {
+    width: 100%;
+    direction: rtl;
+}
+
+.the_paragraph_shortcode {
+    margin: 10px 0;
+    padding: 12px;
+}
+
+.the_paragraph_shortcode_copy button{
+    width: 50%;
+    margin: auto;
+    background-color: #5fb9b9;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: IranSansNormal;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.generate_paragraph_shortcode {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.58);
+    z-index: 10000;
+}
+
+.generate_paragraph_shortcode_box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    width: 400px;
+    height: max-content;
+    margin: auto;
+    direction: rtl;
+    outline: none;
+    font-family: IranSansNormal;
+}
+.gallery_item_trash {
+    width: 30px;
+    height: 30px;
+    background: url("../images/trash.png")center center no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    position: absolute;
+    border: navajowhite;
+    top: 13px;
+    left: 10px;
+    z-index: 1;
+}
